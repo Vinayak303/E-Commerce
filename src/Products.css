@@ -1,0 +1,42 @@
+.IMAGE {
+  object-fit: cover;
+  height: 30%;
+}
+.All {
+  width: 500%;
+}
+.laptop {
+  display: flex;
+  overflow-x: scroll;
+}
+.laptop::-webkit-scrollbar {
+  display: none;
+}
+.top {
+  display: flex;
+  overflow-x: scroll;
+}
+.top::-webkit-scrollbar {
+  display: none;
+}
+.sunglass {
+  display: flex;
+  overflow-x: scroll;
+}
+.sunglass::-webkit-scrollbar {
+  display: none;
+}
+.menshoe {
+  display: flex;
+  overflow-x: scroll;
+}
+.menshoe::-webkit-scrollbar {
+  display: none;
+}
+.menswatch {
+  display: flex;
+  overflow-x: scroll;
+}
+.menswatch::-webkit-scrollbar {
+  display: none;
+}
