@@ -3,7 +3,7 @@
   height: 30%;
 }
 .All {
-  width: 500%;
+  gap: 12px;
 }
 .laptop {
   display: flex;
@@ -38,5 +38,111 @@
   overflow-x: scroll;
 }
 .menswatch::-webkit-scrollbar {
+  display: none;
+}
+.womensbag {
+  display: flex;
+  overflow-x: scroll;
+}
+.womensbag::-webkit-scrollbar {
+  display: none;
+}
+.motorcycle {
+  display: flex;
+  overflow-x: scroll;
+}
+.motorcycle::-webkit-scrollbar {
+  display: none;
+}
+.mensshirts {
+  display: flex;
+  overflow-x: scroll;
+}
+.mensshirts::-webkit-scrollbar {
+  display: none;
+}
+.skincare {
+  display: flex;
+  overflow-x: scroll;
+}
+.skincare::-webkit-scrollbar {
+  display: none;
+}
+.homedecoration {
+  display: flex;
+  overflow-x: scroll;
+}
+.homedecoration::-webkit-scrollbar {
+  display: none;
+}
+
+.womenswatches {
+  display: flex;
+  overflow-x: scroll;
+}
+.womenswatches::-webkit-scrollbar {
+  display: none;
+}
+.womensjewellery {
+  display: flex;
+  overflow-x: scroll;
+}
+.womensjewellery::-webkit-scrollbar {
+  display: none;
+}
+.womensdresses {
+  display: flex;
+  overflow-x: scroll;
+}
+.womensdresses::-webkit-scrollbar {
+  display: none;
+}
+.lighting {
+  display: flex;
+  overflow-x: scroll;
+}
+.lighting::-webkit-scrollbar {
+  display: none;
+}
+.furniture {
+  display: flex;
+  overflow-x: scroll;
+}
+.furniture::-webkit-scrollbar {
+  display: none;
+}
+.automotive {
+  display: flex;
+  overflow-x: scroll;
+}
+.automotive::-webkit-scrollbar {
+  display: none;
+}
+.groceries {
+  display: flex;
+  overflow-x: scroll;
+}
+.groceries::-webkit-scrollbar {
+  display: none;
+}
+.smartphones {
+  display: flex;
+  overflow-x: scroll;
+}
+.smartphones::-webkit-scrollbar {
+  display: none;
+}
+.womensshoes {
+  display: flex;
+  overflow-x: scroll;
+}
+.womensshoes::-webkit-scrollbar {
+  display: none;
+}
+.fragrances {
+  display: flex;
+  overflow-x: scroll;
+}
+.fragrances::-webkit-scrollbar {
   display: none;
 }
