@@ -151,7 +151,7 @@ h1 {
   border: 15px;
   padding: 5px;
   margin: 10px;
-  background-color: blue;
+  background-color: rgb(84, 248, 51);
   border-radius: 10px;
 }
 h2 {
@@ -180,5 +180,9 @@ p:hover {
   font-size: small;
 }
 body {
-  max-width: 0;
+  background-image: linear-gradient(
+    to right,
+    rgb(232, 241, 151),
+    rgba(255, 0, 0, 0)
+  );
 }

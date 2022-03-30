@@ -48,8 +48,8 @@ const Products = () => {
   );
   const fragrances = products.filter((item) => item.category === "fragrances");
   return (
-    <div className="  bg-gradient-to-r from-purple-500 to-pink-500 All">
-      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+    <div className="  All">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Laptops
       </h1>
       <div className="  laptop">
@@ -108,7 +108,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Tops
       </h1>
       <div className=" top">
@@ -131,7 +131,7 @@ const Products = () => {
         md:w-96"
                 >
                   <img
-                    className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
+                    className=" ml-4 h-max w-max sm:h-max sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={top.thumbnail}
                   />
 
@@ -166,7 +166,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Sunglass
       </h1>
       <div className="sunglass">
@@ -226,7 +226,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Men Shoes
       </h1>
       <div className="menshoe">
@@ -286,7 +286,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white  transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Men watches
       </h1>
       <div className="menswatch">
@@ -346,7 +346,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Women Bags
       </h1>
       <div className="womensbag">
@@ -406,7 +406,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Motor Cycle
       </h1>
       <div className="motorcycle">
@@ -466,7 +466,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-whitetransition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Men Shirts
       </h1>
       <div className="mensshirts">
@@ -526,7 +526,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Skin Care
       </h1>
       <div className="skincare">
@@ -586,7 +586,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Home Decoration
       </h1>
       <div className="homedecoration">
@@ -646,7 +646,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Womens watches
       </h1>
       <div className="womenswatches">
@@ -706,7 +706,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Womens Jewellery
       </h1>
       <div className="womensjewellery">
@@ -766,7 +766,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Womens Dresses
       </h1>
       <div className="womensdresses">
@@ -826,7 +826,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Lighting
       </h1>
       <div className="lighting">
@@ -886,7 +886,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Furniture
       </h1>
       <div className="furniture">
@@ -946,7 +946,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Automotive
       </h1>
       <div className="automotive">
@@ -1006,7 +1006,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Groceries
       </h1>
       <div className="groceries">
@@ -1066,7 +1066,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Smart Phones
       </h1>
       <div className="smartphones">
@@ -1126,7 +1126,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Womens Shoes
       </h1>
       <div className="smartphones">
@@ -1186,7 +1186,7 @@ const Products = () => {
           );
         })}
       </div>
-      <h1 className="text-4xl  font-mono mt-6 ml-4 mb-8 text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Fragrances
       </h1>
       <div className="smartphones">
