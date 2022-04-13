@@ -60,9 +60,9 @@ function Login() {
       <form onSubmit={handleSubmit}>
         <div className="  mt-20 container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
           <div className="bg-zinc-100  px-6 py-8 rounded shadow-md text-black w-full">
-            <h1 className="mb-8 text-3xl text-center text-purple-600">
+            <h4 className="mb-8 text-3xl text-center text-purple-600">
               Log in
-            </h1>
+            </h4>
 
             <input
               type="text"

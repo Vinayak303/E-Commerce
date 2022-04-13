@@ -3,8 +3,17 @@ import { useState, useEffect } from "react";
 import { db } from "./Firebase";
 import { collection, getDocs } from "firebase/firestore";
 import "./Products.css";
+import { CartContext } from "./Contexts/CartContext";
+import Cart from "./Cart";
+import Navbar from "./Navbar";
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [items, setItems] = useState([
+    {
+      item: { products },
+      Count: 1,
+    },
+  ]);
   const ProductCollectionRef = collection(db, "products");
   useEffect(() => {
     getProduct();
@@ -49,6 +58,10 @@ const Products = () => {
   const fragrances = products.filter((item) => item.category === "fragrances");
   return (
     <div className="  All">
+      <CartContext.Provider value={items}>
+        <Cart />
+        <Navbar />
+      </CartContext.Provider>
       <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Laptops
       </h1>
@@ -73,6 +86,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={laptop.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -97,9 +111,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${laptop.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(laptop) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== laptop.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, laptop]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -133,6 +167,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-max w-max sm:h-max sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={top.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -155,9 +190,27 @@ const Products = () => {
                     </p>
                     <div className="w-full flex justify-between items-center">
                       <h3 className="font-bold text-gray-500">${top.price}</h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(top) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter((item) => item.brand !== top.brand)
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, top]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -191,6 +244,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={sunglass.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -215,9 +269,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${sunglass.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(sunglass) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== sunglass.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, sunglass]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -251,6 +325,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={mensShoe.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -275,9 +350,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${mensShoe.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(mensShoe) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== mensShoe.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, mensShoe]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -311,6 +406,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={mensWatch.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -335,9 +431,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${mensWatch.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(mensWatch) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== mensWatch.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, mensWatch]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -371,6 +487,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={womensBag.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -395,9 +512,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${womensBag.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(womensBag) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== womensBag.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, womensBag]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -431,6 +568,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={motorcycle.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -455,9 +593,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${motorcycle.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(motorcycle) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== motorcycle.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, motorcycle]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -491,6 +649,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={mensshirt.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -515,9 +674,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${mensshirt.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(mensshirt) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== mensshirt.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, mensshirt]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -551,6 +730,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={skincar.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -575,9 +755,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${skincar.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(skincar) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== skincar.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, skincar]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -611,6 +811,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={homedecorations.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -635,9 +836,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${homedecorations.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(homedecorations) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== homedecorations.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, homedecorations]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -671,6 +892,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={womenswatch.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -695,9 +917,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${womenswatch.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(womenswatch) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== womenswatch.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, womenswatch]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -731,6 +973,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={womensjewellerys.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -755,9 +998,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${womensjewellerys.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(womensjewellerys) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== womensjewellerys.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, womensjewellerys]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -791,6 +1054,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={womensdress.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -815,9 +1079,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${womensdress.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(womensdress) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== womensdress.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, womensdress]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -851,6 +1135,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={lightings.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -875,9 +1160,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${lightings.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(lightings) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== lightings.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, lightings]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -911,6 +1216,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={furnitures.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -935,9 +1241,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${furnitures.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(furnitures) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== furnitures.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, furnitures]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -971,6 +1297,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={automotives.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -995,9 +1322,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${automotives.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(automotives) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== automotives.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, automotives]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -1031,6 +1378,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={grocerie.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -1055,9 +1403,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${grocerie.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(grocerie) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== grocerie.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, grocerie]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -1091,6 +1459,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={smartphone.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -1115,9 +1484,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${smartphone.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(smartphone) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== smartphone.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, smartphone]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -1151,6 +1540,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={womensshoe.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -1175,9 +1565,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${womensshoe.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(womensshoe) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== womensshoe.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, womensshoe]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -1211,6 +1621,7 @@ const Products = () => {
                   <img
                     className=" ml-4 h-1/2 w-max sm:h-min sm:w-1/2 object-cover transform transition duration-500 hover:scale-75"
                     src={fragrance.thumbnail}
+                    alt=""
                   />
 
                   <div
@@ -1235,9 +1646,29 @@ const Products = () => {
                       <h3 className="font-bold text-gray-500">
                         ${fragrance.price}
                       </h3>
-                      <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md">
-                        Add
-                      </button>
+                      {items.includes(fragrance) ? (
+                        <button
+                          onClick={() => {
+                            setItems(
+                              items.filter(
+                                (item) => item.brand !== fragrance.brand
+                              )
+                            );
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          remove
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setItems((prev) => [...prev, fragrance]);
+                          }}
+                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mr-5 text-white px-3 py-1 rounded-sm shadow-md"
+                        >
+                          Add
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
