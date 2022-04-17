@@ -1,6 +1,21 @@
 import React from "react";
-
+import { useState } from "react";
+import { db } from "./Firebase";
+import { collection, addDoc } from "firebase/firestore";
 function Contact() {
+  const feedbackCollectionRef = collection(db, "feedback");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const newfeedback = async () => {
+    await addDoc(feedbackCollectionRef, {
+      Name: firstname,
+      SecondName: lastname,
+      emailID: email,
+      Msg: message,
+    });
+  };
   return (
     <div className="py-16 bg-white">
       <div className="mb-8 text-3xl text-center text-purple-600 ">
@@ -20,6 +35,9 @@ function Contact() {
               id="grid-first-name"
               type="text"
               placeholder="FIRST NAME"
+              onChange={(event) => {
+                setFirstname(event.target.value);
+              }}
             />
             {/* <p className="text-red-500 text-xs italic">
               Please fill out this field.
@@ -37,6 +55,9 @@ function Contact() {
               id="grid-last-name"
               type="text"
               placeholder="LAST NAME"
+              onChange={(event) => {
+                setLastname(event.target.value);
+              }}
             />
           </div>
         </div>
@@ -52,6 +73,9 @@ function Contact() {
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="email"
               type="email"
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
             />
             <p className="text-gray-600 text-xs italic">
               Some tips - as long as needed
@@ -66,15 +90,20 @@ function Contact() {
             >
               Message
             </label>
-            <textarea
+            <input
               className=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none"
               id="message"
-            ></textarea>
+              type="text"
+              onChange={(event) => {
+                setMessage(event.target.value);
+              }}
+            />
           </div>
         </div>
         <div className="md:flex md:items-center">
           <div>
             <button
+              onClick={newfeedback}
               className=" mb-10 shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="button"
             >
