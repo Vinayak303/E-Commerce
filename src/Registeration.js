@@ -77,7 +77,7 @@ function Registeration() {
       }
     } catch (error) {
       console.log(error.message);
-      setError("Email Already in Use");
+      // setError("Email Already in Use");
     }
   };
   return (
