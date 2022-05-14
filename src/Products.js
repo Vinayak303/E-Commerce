@@ -1,19 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { db } from "./Firebase";
+import { useNavigate } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
 import "./Products.css";
-import { CartContext } from "./Contexts/CartContext";
-import Cart from "./Cart";
-import Navbar from "./Navbar";
 const Products = () => {
+  let navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  const [items, setItems] = useState([
-    {
-      item: { products },
-      Count: 1,
-    },
-  ]);
+  const [items, setItems] = useState([]);
   const ProductCollectionRef = collection(db, "products");
   useEffect(() => {
     getProduct();
@@ -56,12 +50,33 @@ const Products = () => {
     (item) => item.category === "womens-shoes"
   );
   const fragrances = products.filter((item) => item.category === "fragrances");
+  localStorage.setItem("items", JSON.stringify(items));
   return (
     <div className="  All">
-      <CartContext.Provider value={items}>
-        <Cart />
-        <Navbar />
-      </CartContext.Provider>
+      <button
+        onClick={() => {
+          navigate("/cart");
+        }}
+        class="py-4 px-1 relative border-2 border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out"
+        aria-label="Cart"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+        </svg>
+        <span class="absolute inset-0 object-right-top -mr-6">
+          <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
+            {items.length}
+          </div>
+        </span>
+      </button>
       <h1 className="text-4xl  font-mono  mb-8 ml-4 text-white transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300">
         Laptops
       </h1>
