@@ -42,7 +42,7 @@ function Checkout() {
             class="block w-full py-4 bg-orange-300 hover:bg-orange-400 text-center text-white font-bold font-heading uppercase rounded-md transition duration-200"
             href="#"
           >
-            Go to Checkout
+            Confirm
           </button>
         </div>
       </div>

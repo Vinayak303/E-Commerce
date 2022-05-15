@@ -147,7 +147,7 @@ function Contact() {
               className="  mb-10 shadow bg-blue-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="button"
             >
-              Confirm Order
+              Confirm Your Order
             </button>
           </div>
         </div>
