@@ -3,22 +3,24 @@ import { useNavigate } from "react-router-dom";
 const Cart = () => {
   let navigate = useNavigate();
   const cartitems = JSON.parse(localStorage.getItem("items"));
+
   return (
     <div>
       <button
+        className=" w-full px-6 py-2 text-blue-200 bg-blue-600 hover:bg-blue-900"
         onClick={() => {
           navigate("/home");
         }}
       >
         Back to Product Page
       </button>
-
       {cartitems.map((cartitem) => {
         return (
           <div>
             <div className="flex justify-center items-center ">
               <div
                 className="
+                mt-6
   bg-white
   shadow-md
   mx-3
@@ -65,13 +67,16 @@ const Cart = () => {
           </div>
         );
       })}
-      <br></br>
+
       <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
         <button
           type="submit"
-          className=" px-6 py-2 text-sm transition-colors duration-300 border-2 rounded-full shadow-xl text-red-500 border-rose-400 shadow-rose-300/30 hover:bg-rose-500 hover:text-rose-100"
+          onClick={() => {
+            navigate("/Checkout");
+          }}
+          className="mt-72 w-full px-6 py-2 text-blue-200 bg-blue-600 hover:bg-blue-900"
         >
-          Confirm Your Order
+          Checkout
         </button>
         <br></br>
       </div>

@@ -8,6 +8,8 @@ import Header from "./Header";
 import About from "./About";
 import Contact from "./Contact";
 import Cart from "./Cart";
+import OrderPage from "./OrderPage";
+import Checkout from "./Checkout";
 
 function App() {
   return (
@@ -15,8 +17,9 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/home" element={<Products />} />
-
+          <Route path="/Home" element={<Products />} />
+          <Route path="/OrderPage" element={<OrderPage />} />
+          <Route path="/Checkout" element={<Checkout />} />
           <Route path="/" element={<Registeration />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/Login" element={<Login />} />
