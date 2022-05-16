@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import { auth } from "./Firebase";
 import { db } from "./Firebase";
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
@@ -8,10 +10,17 @@ const Products = () => {
   let navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [items, setItems] = useState([]);
+  const [user, setUser] = useState({});
   const ProductCollectionRef = collection(db, "products");
   useEffect(() => {
     getProduct();
   }, []);
+  const logout = async () => {
+    await signOut(auth);
+  };
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
   const getProduct = async () => {
     const data = await getDocs(ProductCollectionRef);
     setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -53,6 +62,21 @@ const Products = () => {
   localStorage.setItem("items", JSON.stringify(items));
   return (
     <div className="  All">
+      <button
+        className=" font-serif inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out"
+        onClick={() => {
+          {
+            logout();
+          }
+          navigate("/Login");
+        }}
+      >
+        User Logged In: {user?.email}
+        <br></br>
+        <br></br>
+        Log Out
+      </button>
+      <br></br>
       <button
         onClick={() => {
           navigate("/cart");

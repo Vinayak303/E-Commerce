@@ -19,6 +19,7 @@ function Registeration() {
       validate({ newName, registerEmail, registerPassword, newAge })
     );
     setIsSubmit(true);
+    localStorage.setItem("user", false);
   };
   useEffect(() => {
     console.log(formErrors);
@@ -29,6 +30,7 @@ function Registeration() {
     const errors = {};
     const Regex = /^[a-zA-Z\-]+$/;
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const agevali = /^[0-9]+$/;
     if (!values.newName) {
       errors.newName = "Username is required !";
     } else if (!Regex.test(values.newName)) {
@@ -48,6 +50,8 @@ function Registeration() {
     }
     if (!values.newAge) {
       errors.newAge = "Please Enter your Age !";
+    } else if (!agevali.test(values.newAge)) {
+      errors.newAge = "This is not a valid age format !";
     }
     return errors;
   };
@@ -160,6 +164,17 @@ function Registeration() {
                 Register
               </button>
             </div>
+            <p class="text-sm font-semibold mt-2 pt-1 text-blue-600">
+              Already have an account?
+            </p>
+            <button
+              onClick={() => {
+                navigate("/Login");
+              }}
+              className=" text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
+            >
+              Login Here
+            </button>
           </div>
         </div>
       </form>

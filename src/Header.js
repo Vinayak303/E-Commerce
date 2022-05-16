@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 function Header() {
   let navigate = useNavigate();
+  const user = localStorage.getItem("user");
   return (
     <div>
       <nav className="bg-white shadow">
@@ -12,7 +13,7 @@ function Header() {
             <div className="flex flex-col md:flex-row md:mx-6">
               <div
                 onClick={() => {
-                  navigate("/home");
+                  user ? navigate("/home") : navigate("/");
                 }}
               >
                 <a className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">
@@ -21,7 +22,7 @@ function Header() {
               </div>
               <div
                 onClick={() => {
-                  navigate("/contact");
+                  user ? navigate("/contact") : navigate("/");
                 }}
               >
                 <a className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">
@@ -30,7 +31,7 @@ function Header() {
               </div>
               <div
                 onClick={() => {
-                  navigate("/about");
+                  user ? navigate("/about") : navigate("/");
                 }}
               >
                 <a className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">
