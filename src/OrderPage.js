@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { db } from "./Firebase";
+import { useNavigate } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 function Contact() {
   const feedbackCollectionRef = collection(db, "details");
@@ -10,6 +11,7 @@ function Contact() {
   const [message, setMessage] = useState("");
   const [pincode, setPincode] = useState("");
   const [state, setState] = useState("");
+  let navigate = useNavigate();
   const newfeedback = async () => {
     await addDoc(feedbackCollectionRef, {
       Name: firstname,
@@ -142,7 +144,7 @@ function Contact() {
             <button
               onClick={() => {
                 newfeedback();
-                alert("Your order has been placed");
+                navigate("/Thanks");
               }}
               className="  mb-10 shadow bg-blue-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="button"

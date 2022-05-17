@@ -103,7 +103,10 @@ function Contact() {
         <div className="md:flex md:items-center">
           <div>
             <button
-              onClick={newfeedback}
+              onClick={() => {
+                newfeedback();
+                alert("Submitted Successfully");
+              }}
               className=" mb-10 shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="button"
             >

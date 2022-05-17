@@ -10,6 +10,7 @@ import Contact from "./Contact";
 import Cart from "./Cart";
 import OrderPage from "./OrderPage";
 import Checkout from "./Checkout";
+import Thanks from "./Thanks";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/Home" element={<Products />} />
+          <Route path="/Thanks" element={<Thanks />} />
           <Route path="/OrderPage" element={<OrderPage />} />
           <Route path="/Checkout" element={<Checkout />} />
           <Route path="/" element={<Registeration />} />

@@ -74,7 +74,7 @@ const Cart = () => {
           onClick={() => {
             navigate("/Checkout");
           }}
-          className="mt-72 w-full px-6 py-2 text-blue-200 bg-blue-600 hover:bg-blue-900"
+          className="mt-16 w-full px-6 py-2 text-blue-200 bg-blue-600 hover:bg-blue-900"
         >
           Checkout
         </button>
