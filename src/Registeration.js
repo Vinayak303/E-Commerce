@@ -19,7 +19,6 @@ function Registeration() {
       validate({ newName, registerEmail, registerPassword, newAge })
     );
     setIsSubmit(true);
-    localStorage.setItem("user", false);
   };
   useEffect(() => {
     console.log(formErrors);
