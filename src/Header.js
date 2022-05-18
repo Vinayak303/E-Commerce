@@ -10,17 +10,29 @@ function Header() {
 
           <div className="md:flex items-center">
             <div className="flex flex-col md:flex-row md:mx-6">
-              <div onClick={navigate("/home")}>
+              <div
+                onClick={() => {
+                  navigate("/Home");
+                }}
+              >
                 <a className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">
                   Home
                 </a>
               </div>
-              <div onClick={navigate("/contact")}>
+              <div
+                onClick={() => {
+                  navigate("/contact");
+                }}
+              >
                 <a className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">
                   Contact Us
                 </a>
               </div>
-              <div onClick={navigate("/about")}>
+              <div
+                onClick={() => {
+                  navigate("/about");
+                }}
+              >
                 <a className="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">
                   About
                 </a>
