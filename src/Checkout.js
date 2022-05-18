@@ -68,7 +68,7 @@ function Checkout() {
                 </div>
                 <div class="flex flex-col justify-start items-center">
                   <p class="text-lg leading-6 dark:text-white font-semibold text-gray-800">
-                    DPD Delivery
+                    E-shop Delivery
                     <br />
                     <span class="font-normal">Delivery with 24 Hours</span>
                   </p>
